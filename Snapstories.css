@@ -1,0 +1,255 @@
+/* ==========================================================================
+   SnapStory - Core Stylesheet
+   ========================================================================== */
+
+/* --- Custom Variables & Typography --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+:root {
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --color-bg-dark: #070708;
+    --color-text-main: #ffffff;
+    --color-text-muted: #a1a1aa;
+    --color-accent-orange: #f97316;
+}
+
+body {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-main);
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* --- Navigation System --- */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(7, 7, 8, 0.95), rgba(7, 7, 8, 0.7));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 4rem;
+    box-sizing: border-box;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+nav {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-link {
+    font-family: var(--font-body);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover, 
+.nav-link.active {
+    color: var(--color-text-main);
+}
+
+/* --- View Engine & Dynamic Transitions --- */
+.view-section {
+    display: none;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    min-h: 100vh;
+    box-sizing: border-box;
+    padding-top: 7rem;
+}
+
+.view-section.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Section 1: Home / Landing Grid Layout --- */
+.hero-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.hero-content p {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    font-size: 1.05rem;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+}
+
+.btn-explore {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: var(--color-text-main);
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-explore:hover {
+    background-color: var(--color-text-main);
+    color: var(--color-bg-dark);
+    border-color: var(--color-text-main);
+}
+
+/* --- Card Preview Component Layer --- */
+.preview-showcase {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-end;
+}
+
+.preview-card {
+    width: 180px;
+    height: 240px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.preview-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Section 2: Informational Canvas Look (About, Contest, Product) --- */
+.content-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.content-container h2 {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.content-container p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* List Formatting for Challenge Lists */
+.bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 3rem auto 0 auto;
+    max-width: 550px;
+    text-align: left;
+}
+
+.bullet-list li {
+    font-size: 1.1rem;
+    padding: 0.75rem 0;
+    color: var(--color-text-main);
+    position: relative;
+    padding-left: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bullet-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent-orange);
+    font-size: 1.5rem;
+    top: 0.4rem;
+}
+
+/* --- Section 3: Contact Screen Interface --- */
+.contact-item-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 450px;
+    margin: 1.5rem auto;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-icon {
+    width: 24px;
+    height: 24px;
+    stroke: var(--color-accent-orange);
+    fill: none;
+    flex-shrink: 0;
+}
+
+.contact-text {
+    font-size: 1.1rem;
+    color: var(--color-text-main);
+}
+
+/* --- Responsive Adaptations --- */
+@media (max-width: 968px) {
+    header {
+        padding: 1.25rem 2rem;
+    }
+    .hero-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    .hero-content p {
+        margin: 0 auto 2.5rem auto;
+    }
+    .preview-showcase {
+        justify-content: center;
+    }
+    .content-container h2 {
+        font-size: 2.75rem;
+    }
+}
